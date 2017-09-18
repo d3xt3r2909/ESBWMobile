@@ -53,11 +53,7 @@ namespace ESBX
                     DisplayAlert("Čestitamo", "Proglašeni ste kupcem mjeseca i osvojili ste " + Popust.Popust 
                         + " popusta prilikom naredne kupovine. Vaš popust vrijedi do: " + Popust.VrijediDo + " , a šifra je: " + Popust.Sifra + " . \n  \n Vaš Exspress Salad Bar.", "OK");
                 }
-
-
-                Application.Current.MainPage = new Navigation.MyPage();
-
-                //this.Navigation.PushAsync(new Navigation.MyPage());
+                this.Navigation.PushAsync(new Navigation.MyPage());
             }
             else
                 DisplayAlert("Uspjeh", "Unjeli ste pogresan ime ili lozinku", "OK");

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,7 +46,7 @@ namespace ESBX
             base.OnAppearing();
         }
 
-        private void sacuvajAcc_Clicked(object sender, EventArgs e)
+        private void sacuvajAcc_Clicked()
         {
             if(imeInput.Text=="" || prezimeInput.Text=="" || telefonInput.Text=="" || emailInput.Text=="" || adresaInput.Text==""
                 || gradInput.SelectedIndex == -1)
@@ -59,12 +60,16 @@ namespace ESBX
                 DisplayAlert("Upozorenje", "Polje telefon nije validno!", "OK");
                 return;
             }
-            if (!HelperMethods.ValidateEmail(emailInput.Text))
+            try
+            {
+                MailAddress mail = new MailAddress(emailInput.Text);
+            }
+            catch (Exception)
             {
                 DisplayAlert("Upozorenje", "Polje email nije validno!", "OK");
                 return;
             }
-
+            
             k.Ime = imeInput.Text;
             k.Prezime = prezimeInput.Text;
             k.BrojTelefona = telefonInput.Text;
@@ -90,7 +95,7 @@ namespace ESBX
             }
         }
 
-        private void lozinkaButton_Clicked(object sender, EventArgs e)
+        private void lozinkaButton_Clicked()
         {
             Navigation.PushAsync(new PodesavanjeLozinke());
         }

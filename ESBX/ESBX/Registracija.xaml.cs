@@ -11,6 +11,7 @@ using ESBX_MyPLC.ViewModel;
 using Newtonsoft.Json;
 using ESBX_MyPLC.Util;
 using ESBX_MyPLC.Models;
+using System.Net.Mail;
 
 namespace ESBX
 {
@@ -39,7 +40,11 @@ namespace ESBX
                 DisplayAlert("Upozorenje", "Polje telefon nije validno!", "OK");
                 return;
             }
-            if (!HelperMethods.ValidateEmail(emailInput.Text))
+            try
+            {
+                MailAddress mail = new MailAddress(emailInput.Text);
+            }
+            catch (Exception)
             {
                 DisplayAlert("Upozorenje", "Polje email nije validno!", "OK");
                 return;

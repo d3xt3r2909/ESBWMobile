@@ -26,12 +26,9 @@ namespace ESBX
 			InitializeComponent ();
 		}
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
+        
 
-        private void SacuvajPass_Clicked(object sender, EventArgs e)
+        private void SacuvajPass_Clicked()
         {
 
             if (k.LozinkaHash == HelperPassword.GenerateHash(trenutniPass.Text, k.LozinkaSalt))
